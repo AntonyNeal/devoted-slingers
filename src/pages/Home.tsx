@@ -1,233 +1,149 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { useState, useEffect, type MouseEvent } from 'react';
+import { useState } from 'react';
 import BookingModal from '../components/BookingModal';
 
-const heroImages = [
-  'https://pbs.twimg.com/media/G3hgK2hX0AAB8RL.jpg:large',
-  'https://pbs.twimg.com/media/G3Gh-hdbUAAQTDo.jpg:large',
-  'https://pbs.twimg.com/media/G3qlG5VWwAAkv0w.jpg:large',
-  'https://pbs.twimg.com/media/G4OoP7-WoAA4YbX.jpg:large',
-  'https://pbs.twimg.com/media/G22stVEaYAAuqaG.jpg:large',
-];
-
 export default function Home() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState(0);
-  const [clickLog, setClickLog] = useState<string[]>([]);
-
-  // Add diagnostic info to window for debugging
-  useEffect(() => {
-    const diag = {
-      showClickLogs: () => {
-        console.log('[DIAG] Click logs:', clickLog);
-      },
-      clearClickLogs: () => {
-        setClickLog([]);
-      },
-    };
-    Object.assign(window, diag);
-  }, [clickLog]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 15000); // Slowed down from 9000ms to 15000ms for better photo impact
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const goToImage = (index: number) => {
-    setCurrentImageIndex(index);
-  };
-
-  const handleIndicatorMouseDown = (e: MouseEvent<HTMLButtonElement>, index: number) => {
-    setIsDragging(true);
-    setDragStart(e.clientX);
-    goToImage(index);
-  };
-
-  const handleIndicatorMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!isDragging) return;
-
-    const delta = e.clientX - dragStart;
-    if (Math.abs(delta) > 30) {
-      // Dragged more than 30px
-      if (delta > 0) {
-        // Dragged right - go to previous image
-        setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
-      } else {
-        // Dragged left - go to next image
-        setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-      }
-      setDragStart(e.clientX);
-    }
-  };
-
-  const handleIndicatorMouseUp = () => {
-    setIsDragging(false);
-  };
 
   return (
     <>
       <Helmet>
-        <title>Claire Hamilton - Canberra Companion</title>
+        <title>Bosca&apos;s Slingers - Assemble Your Party</title>
         <meta
           name="description"
-          content="Claire Hamilton - Real curves. Real connection. Ultimate GFE. Independent escort based in Canberra, Australia."
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap"
-          rel="stylesheet"
+          content="Assemble your party. Unite with warriors. Epic Magic: The Gathering tournaments where friendships are forged and legends are born."
         />
         <style>
           {`
-            @keyframes gentle-pulse {
-              0%, 100% { opacity: 1; transform: scale(1); }
-              50% { opacity: 0.95; transform: scale(1.02); }
+            @keyframes ember-glow {
+              0%, 100% { text-shadow: 0 0 20px rgba(251, 146, 60, 0.8), 0 0 40px rgba(239, 68, 68, 0.4), 0 2px 8px rgba(0,0,0,0.9); }
+              50% { text-shadow: 0 0 30px rgba(251, 146, 60, 1), 0 0 60px rgba(239, 68, 68, 0.6), 0 2px 8px rgba(0,0,0,0.9); }
             }
 
-            /* Hide scroll bar globally when on home page */
+            @keyframes float {
+              0%, 100% { transform: translateY(0px); }
+              50% { transform: translateY(-10px); }
+            }
+
             html, body {
               overflow: hidden;
               margin: 0;
               padding: 0;
             }
-
-            /* Ensure images cover the full area properly */
-            .home-page img {
-              object-position: center;
-            }
-
-            /* Additional scroll bar hiding */
-            html::-webkit-scrollbar,
-            body::-webkit-scrollbar {
-              display: none;
-            }
-            html {
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-            }
           `}
         </style>
       </Helmet>
 
-      <div className="home-page bg-black fixed inset-0 overflow-hidden">
-        {/* Full-Screen Hero Section with Photo Carousel */}
+      <div className="fixed inset-0 overflow-hidden">
+        {/* Hero Section with Background Image */}
         <section className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center">
-          {/* Carousel Container */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
-            {heroImages.map((image, index) => {
-              let transformClass = '';
-              let zIndex = 0;
+          {/* Background Image - Add your Bosca's Slingers image here */}
+          <div
+            className="absolute inset-0 w-full h-full bg-cover bg-center"
+            style={{
+              backgroundImage: 'url(/images/hero.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
 
-              if (index === currentImageIndex) {
-                transformClass = 'translate-x-0';
-                zIndex = 10;
-              } else if (index < currentImageIndex) {
-                transformClass = '-translate-x-full';
-                zIndex = 5;
-              } else {
-                transformClass = 'translate-x-full';
-                zIndex = 5;
-              }
+          {/* Fallback gradient if image not loaded */}
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-orange-950 to-black opacity-70" />
 
-              return (
-                <img
-                  key={index}
-                  src={image}
-                  alt="Claire Hamilton"
-                  className={`absolute inset-0 w-full h-full object-contain transition-transform duration-1000 ease-in-out ${transformClass}`}
-                  style={{ zIndex, backgroundColor: '#000' }}
-                />
-              );
-            })}
-          </div>
+          {/* Epic Dark Overlay with Mana Glow */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-orange-900/30 to-black/80" />
 
-          {/* Dark Overlay - Subtle for photo impact */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-rose-900/20 to-black/40" />
-
-          {/* Content Overlay - Elegant and readable */}
+          {/* Content Overlay */}
           <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center h-full">
             <h1
-              className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light mb-4 sm:mb-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] leading-none tracking-tight animate-pulse"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-8 uppercase tracking-wider leading-none"
               style={{
-                textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)',
-                fontFamily: '"Playfair Display", serif',
-                animation: 'gentle-pulse 4s ease-in-out infinite',
+                animation: 'ember-glow 3s ease-in-out infinite',
+                fontFamily: 'system-ui, -apple-system, sans-serif',
+                fontWeight: 900,
+                color: '#fb923c',
               }}
             >
-              Claire Hamilton
+              Bosca&apos;s Slingers
             </h1>
             <p
-              className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-light"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 max-w-5xl mx-auto leading-relaxed font-semibold tracking-wide"
               style={{
-                textShadow: '1px 1px 6px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.5)',
-                fontFamily: '"Crimson Text", serif',
+                textShadow: '0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(251, 146, 60, 0.5)',
+                color: '#fed7aa',
               }}
             >
-              Real curves. Real connection. Ultimate GFE.
+              Assemble Your Party
             </p>
-            <div className="flex gap-3 sm:gap-4 md:gap-6 justify-center flex-wrap px-4 mb-8 sm:mb-12">
+            <p
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed font-light opacity-90"
+              style={{
+                textShadow: '0 2px 8px rgba(0,0,0,0.8)',
+                color: '#fef3c7',
+              }}
+            >
+              Where MTG warriors unite for epic battles, forge lasting bonds, and write their names
+              in legend
+            </p>
+            <div className="flex gap-4 sm:gap-6 justify-center flex-wrap px-4 mb-8 sm:mb-12">
               <button
                 onClick={() => setIsBookingOpen(true)}
-                className="group relative px-6 sm:px-7 md:px-8 lg:px-10 py-3 sm:py-3 md:py-4 bg-gradient-to-r from-red-800/60 to-red-900/70 text-white rounded-lg text-base sm:text-lg md:text-lg font-bold tracking-wide hover:shadow-2xl hover:from-red-800/80 hover:to-red-900/90 transition-all duration-500 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-offset-2 backdrop-blur-sm border border-red-700/50"
+                className="group relative px-8 sm:px-10 md:px-12 lg:px-14 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-orange-600 via-red-600 to-red-700 text-white rounded-lg text-lg sm:text-xl md:text-2xl font-bold tracking-wide hover:shadow-2xl hover:shadow-orange-500/50 hover:from-orange-500 hover:via-red-500 hover:to-red-600 transition-all duration-500 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-500 focus:ring-offset-2 backdrop-blur-sm border-2 border-orange-400/50"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                  animation: 'float 3s ease-in-out infinite',
                   boxShadow:
-                    '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                    '0 8px 32px rgba(251, 146, 60, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                 }}
-                aria-label="Book an appointment now"
+                aria-label="Join the warband"
               >
-                Book Now
-                <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300">
-                  →
+                <span className="relative z-10">Join the Warband</span>
+                <span className="ml-3 inline-block group-hover:translate-x-2 transition-transform duration-300 text-2xl">
+                  ⚔️
                 </span>
               </button>
               <Link
-                to="/gallery"
-                className="group px-6 sm:px-7 md:px-8 lg:px-10 py-3 sm:py-3 md:py-4 border-2 border-rose-300 text-rose-100 rounded-lg text-base sm:text-lg md:text-lg font-semibold tracking-wide hover:bg-rose-50/20 hover:border-rose-200 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 backdrop-blur-sm"
-                aria-label="View photo gallery"
+                to="/services"
+                className="group px-8 sm:px-10 md:px-12 lg:px-14 py-4 sm:py-5 md:py-6 border-3 border-orange-400/80 text-orange-200 rounded-lg text-lg sm:text-xl md:text-2xl font-bold tracking-wide hover:bg-orange-500/20 hover:border-orange-300 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-400 focus:ring-offset-2 backdrop-blur-sm"
+                style={{
+                  boxShadow: '0 4px 16px rgba(251, 146, 60, 0.3)',
+                }}
+                aria-label="View battle grounds"
               >
-                View Gallery
-                <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">
-                  →
+                Find Your Battle
+                <span className="ml-3 inline-block group-hover:translate-x-2 transition-transform text-2xl">
+                  🛡️
                 </span>
               </Link>
             </div>
+
+            {/* Flavor Text */}
+            <div className="mt-8 max-w-2xl mx-auto">
+              <p
+                className="text-sm sm:text-base md:text-lg italic opacity-75"
+                style={{
+                  textShadow: '0 1px 4px rgba(0,0,0,0.9)',
+                  color: '#fdba74',
+                }}
+              >
+                &quot;Alone we are strong. Together, we are unstoppable. The slingers stand as
+                one.&quot;
+              </p>
+            </div>
           </div>
         </section>
-
-        {/* Carousel Indicators - Subtle and refined */}
-        <div
-          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex gap-3 sm:gap-3 justify-center select-none pointer-events-auto"
-          onMouseMove={handleIndicatorMouseMove}
-          onMouseUp={handleIndicatorMouseUp}
-          onMouseLeave={handleIndicatorMouseUp}
-        >
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              onMouseDown={(e) => handleIndicatorMouseDown(e, index)}
-              className={`rounded-full transition-all duration-300 cursor-pointer focus:outline-none flex-shrink-0 ${
-                index === currentImageIndex
-                  ? 'bg-white/80 w-2.5 h-2.5'
-                  : 'bg-white/40 w-2 h-2 hover:bg-white/60'
-              }`}
-              style={{
-                boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
-              }}
-              aria-label={`Go to image ${index + 1}`}
-            />
-          ))}
-        </div>
       </div>
 
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        provider={{
+          id: 'default',
+          name: 'Join the Warband',
+        }}
+        hourlyRate={25}
+        platformFeePercentage={0.05}
+      />
     </>
   );
 }

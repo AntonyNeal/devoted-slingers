@@ -49,3 +49,11 @@ Build "Bosca-Slingers" - a Magic: The Gathering coaching booking platform with a
 - Scryfall is the primary MTG card database API
 - Sessions typically booked in hourly increments
 - Deck reviews are asynchronous services, coaching sessions are live
+
+## Azure Infrastructure
+
+- Resource Group: bosca-slingers-rg (Australia East)
+- PostgreSQL: bosca-slingers-db.postgres.database.azure.com
+- Database: boscaslingers
+- App Service: bosca-slingers-api.azurewebsites.net
+- Azure credentials stored in GitHub Secrets as AZURE_CREDENTIALS

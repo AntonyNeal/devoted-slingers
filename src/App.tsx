@@ -55,14 +55,17 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>Claire Hamilton</title>
-        <meta name="description" content="Claire Hamilton - Melbourne Companion" />
+        <title>Bosca&apos;s Slingers - Where Warriors Gather</title>
+        <meta
+          name="description"
+          content="Assemble your party. Unite with fellow warriors. Premier Magic: The Gathering tournaments where legends are forged together."
+        />
       </Helmet>
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-orange-950 to-gray-900">
         {/* Navigation Header */}
         <header
-          className={`sticky top-0 z-50 ${location.pathname === '/' ? 'bg-transparent backdrop-blur-md border-b-0' : 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-rose-100'}`}
+          className={`sticky top-0 z-50 ${location.pathname === '/' ? 'bg-transparent backdrop-blur-md border-b-0' : 'bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-orange-900'}`}
         >
           <div className="w-full px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 xl:py-6">
             <nav className="max-w-7xl mx-auto">
@@ -101,37 +104,41 @@ function App() {
                       }, 500);
                     }
                   }}
-                  className={`text-xl sm:text-2xl font-light ${location.pathname === '/' ? 'text-white' : 'text-gray-900'} tracking-tight hover:text-rose-600 transition-colors whitespace-nowrap cursor-pointer select-none`}
+                  className={`text-xl sm:text-2xl font-bold ${location.pathname === '/' ? 'text-orange-500' : 'text-orange-400'} tracking-wide hover:text-orange-300 transition-colors whitespace-nowrap cursor-pointer select-none uppercase`}
                   style={
-                    location.pathname === '/' ? { textShadow: '0 2px 8px rgba(0,0,0,0.8)' } : {}
+                    location.pathname === '/'
+                      ? {
+                          textShadow: '0 0 20px rgba(251, 146, 60, 0.8), 0 2px 8px rgba(0,0,0,0.8)',
+                        }
+                      : {}
                   }
                   title={
                     location.pathname === '/admin'
                       ? 'Click to return home'
-                      : 'Triple-click for surprise!'
+                      : 'Triple-click for admin'
                   }
                 >
-                  Claire Hamilton
+                  Bosca&apos;s Slingers
                 </div>
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={() => {
                       handleBookingOpen();
                     }}
-                    className="px-3 py-2 bg-gradient-to-r from-rose-600 to-rose-700 text-white rounded-lg font-semibold hover:from-rose-700 hover:to-rose-800 transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 text-sm cursor-pointer"
-                    aria-label="Book an appointment now"
+                    className="px-3 py-2 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-lg font-semibold hover:from-orange-700 hover:to-red-800 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 text-sm cursor-pointer"
+                    aria-label="Join the warband"
                   >
-                    Book Now
+                    Join the Warband
                   </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       setIsMobileMenuOpen(!isMobileMenuOpen);
                     }}
-                    className={`p-2 ${location.pathname === '/' ? 'text-white' : 'text-gray-900'} hover:text-rose-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 rounded-lg`}
+                    className={`p-2 ${location.pathname === '/' ? 'text-orange-400' : 'text-orange-300'} hover:text-orange-200 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded-lg`}
                     style={
                       location.pathname === '/'
-                        ? { filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))' }
+                        ? { filter: 'drop-shadow(0 0 8px rgba(251, 146, 60, 0.6))' }
                         : {}
                     }
                     aria-label="Toggle mobile menu"
@@ -192,29 +199,33 @@ function App() {
                       }, 500);
                     }
                   }}
-                  className={`text-3xl xl:text-4xl font-light ${location.pathname === '/' ? 'text-white' : 'text-gray-900'} tracking-tight hover:text-rose-600 transition-colors whitespace-nowrap cursor-pointer select-none`}
+                  className={`text-3xl xl:text-4xl font-bold ${location.pathname === '/' ? 'text-orange-500' : 'text-orange-400'} tracking-wide hover:text-orange-300 transition-colors whitespace-nowrap cursor-pointer select-none uppercase`}
                   style={
-                    location.pathname === '/' ? { textShadow: '0 2px 8px rgba(0,0,0,0.8)' } : {}
+                    location.pathname === '/'
+                      ? {
+                          textShadow: '0 0 20px rgba(251, 146, 60, 0.8), 0 2px 8px rgba(0,0,0,0.8)',
+                        }
+                      : {}
                   }
                   title={
                     location.pathname === '/admin'
                       ? 'Click to return home'
-                      : 'Triple-click for surprise!'
+                      : 'Triple-click for admin'
                   }
                 >
-                  Claire Hamilton
+                  Bosca&apos;s Slingers
                 </div>
 
                 {/* Desktop Navigation */}
                 <div className="flex space-x-6 xl:space-x-8 items-center">
                   <Link
                     to="/about"
-                    className={`font-medium transition-colors duration-300 focus:outline-none focus:text-rose-600 ${
+                    className={`font-medium transition-colors duration-300 focus:outline-none focus:text-orange-400 ${
                       location.pathname === '/about'
-                        ? 'text-rose-600'
+                        ? 'text-orange-400'
                         : location.pathname === '/'
-                          ? 'text-white hover:text-rose-400'
-                          : 'text-gray-900 hover:text-rose-600'
+                          ? 'text-orange-300 hover:text-orange-200'
+                          : 'text-orange-300 hover:text-orange-400'
                     }`}
                     style={
                       location.pathname === '/' ? { textShadow: '0 2px 4px rgba(0,0,0,0.8)' } : {}
@@ -225,44 +236,44 @@ function App() {
                   </Link>
                   <Link
                     to="/prices"
-                    className={`font-medium transition-colors duration-300 focus:outline-none focus:text-rose-600 ${
+                    className={`font-medium transition-colors duration-300 focus:outline-none focus:text-orange-400 ${
                       location.pathname === '/prices'
-                        ? 'text-rose-600'
+                        ? 'text-orange-400'
                         : location.pathname === '/'
-                          ? 'text-white hover:text-rose-400'
-                          : 'text-gray-900 hover:text-rose-600'
+                          ? 'text-orange-300 hover:text-orange-200'
+                          : 'text-orange-300 hover:text-orange-400'
                     }`}
                     style={
                       location.pathname === '/' ? { textShadow: '0 2px 4px rgba(0,0,0,0.8)' } : {}
                     }
                     aria-label="Prices page"
                   >
-                    Prices
+                    Pricing
                   </Link>
                   <Link
                     to="/services"
-                    className={`font-medium transition-colors duration-300 focus:outline-none focus:text-rose-600 ${
+                    className={`font-medium transition-colors duration-300 focus:outline-none focus:text-orange-400 ${
                       location.pathname === '/services'
-                        ? 'text-rose-600'
+                        ? 'text-orange-400'
                         : location.pathname === '/'
-                          ? 'text-white hover:text-rose-400'
-                          : 'text-gray-900 hover:text-rose-600'
+                          ? 'text-orange-300 hover:text-orange-200'
+                          : 'text-orange-300 hover:text-orange-400'
                     }`}
                     style={
                       location.pathname === '/' ? { textShadow: '0 2px 4px rgba(0,0,0,0.8)' } : {}
                     }
-                    aria-label="Services page"
+                    aria-label="Tournaments page"
                   >
-                    Services
+                    Tournaments
                   </Link>
                   <button
                     onClick={() => {
                       handleBookingOpen();
                     }}
-                    className="px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 bg-gradient-to-r from-rose-600 to-rose-700 text-white rounded-lg font-semibold hover:from-rose-700 hover:to-rose-800 transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 whitespace-nowrap text-xs sm:text-sm lg:text-base cursor-pointer"
-                    aria-label="Book an appointment now"
+                    className="px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-lg font-semibold hover:from-orange-700 hover:to-red-800 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 whitespace-nowrap text-xs sm:text-sm lg:text-base cursor-pointer"
+                    aria-label="Join the warband"
                   >
-                    Book Now
+                    Join the Warband
                   </button>
                 </div>
               </div>
@@ -270,14 +281,14 @@ function App() {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-              <div className="lg:hidden absolute top-full left-0 right-0 bg-white/90 backdrop-blur-md shadow-lg z-50">
+              <div className="lg:hidden absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-md shadow-lg z-50 border-b border-orange-900">
                 <div className="px-4 py-6 space-y-4">
                   <Link
                     to="/about"
-                    className={`block font-medium transition-colors duration-300 focus:outline-none focus:text-rose-600 ${
+                    className={`block font-medium transition-colors duration-300 focus:outline-none focus:text-orange-400 ${
                       location.pathname === '/about'
-                        ? 'text-rose-600'
-                        : 'text-gray-900 hover:text-rose-600'
+                        ? 'text-orange-400'
+                        : 'text-orange-300 hover:text-orange-200'
                     }`}
                     aria-label="About page"
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -286,27 +297,27 @@ function App() {
                   </Link>
                   <Link
                     to="/prices"
-                    className={`block font-medium transition-colors duration-300 focus:outline-none focus:text-rose-600 ${
+                    className={`block font-medium transition-colors duration-300 focus:outline-none focus:text-orange-400 ${
                       location.pathname === '/prices'
-                        ? 'text-rose-600'
-                        : 'text-gray-900 hover:text-rose-600'
+                        ? 'text-orange-400'
+                        : 'text-orange-300 hover:text-orange-200'
                     }`}
                     aria-label="Prices page"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Prices
+                    Pricing
                   </Link>
                   <Link
                     to="/services"
-                    className={`block font-medium transition-colors duration-300 focus:outline-none focus:text-rose-600 ${
+                    className={`block font-medium transition-colors duration-300 focus:outline-none focus:text-orange-400 ${
                       location.pathname === '/services'
-                        ? 'text-rose-600'
-                        : 'text-gray-900 hover:text-rose-600'
+                        ? 'text-orange-400'
+                        : 'text-orange-300 hover:text-orange-200'
                     }`}
-                    aria-label="Services page"
+                    aria-label="Tournaments page"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Services
+                    Tournaments
                   </Link>
                 </div>
               </div>
@@ -324,60 +335,60 @@ function App() {
 
         {/* Footer - Hidden on home page and admin page */}
         {location.pathname !== '/' && location.pathname !== '/admin' && (
-          <footer className="bg-gray-900 text-white py-12 sm:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8">
+          <footer className="bg-gradient-to-b from-gray-900 to-black text-white py-12 sm:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 border-t border-orange-900/50">
             <div className="w-full px-4 sm:px-6 lg:px-8">
               <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-12 lg:mb-16">
                   <div>
-                    <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold mb-4 sm:mb-6">
-                      Claire Hamilton
+                    <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-4 sm:mb-6 text-orange-400">
+                      Bosca&apos;s Slingers
                     </h3>
                     <p className="text-gray-300 mb-4 sm:text-base lg:text-lg">
-                      Real curves. Real connection. Ultimate GFE.
+                      Where warriors gather. Where legends unite.
                     </p>
                     <p className="text-gray-300 text-sm sm:text-base">
-                      Independent escort based in Canberra, Australia
+                      Join fellow MTG warriors in epic tournaments. Find your party, forge
+                      alliances, and claim victory together.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold mb-4 sm:mb-6">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-4 sm:mb-6 text-orange-400">
                       Contact
                     </h3>
                     <div className="space-y-2 sm:space-y-3 text-gray-300 sm:text-base lg:text-lg">
-                      <p>SMS Only: 0403 977 680</p>
-                      <p>Email: contact.clairehamilton@proton.me</p>
-                      <p>WhatsApp: +61 403 977 680</p>
+                      <p>Email: alex@devotedslingers.ai</p>
+                      <p>Email: julian@devotedslingers.ai</p>
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold mb-4 sm:mb-6">
-                      Follow Me
+                    <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-4 sm:mb-6 text-orange-400">
+                      Battle Grounds
                     </h3>
                     <div className="space-y-2 sm:space-y-3">
                       <a
-                        href="#"
-                        className="block text-gray-300 hover:text-pink-400 transition-colors sm:text-base lg:text-lg"
+                        href="/services"
+                        className="block text-gray-300 hover:text-orange-400 transition-colors sm:text-base lg:text-lg"
                       >
-                        Twitter
+                        Standard Battles
                       </a>
                       <a
-                        href="#"
-                        className="block text-gray-300 hover:text-pink-400 transition-colors sm:text-base lg:text-lg"
+                        href="/services"
+                        className="block text-gray-300 hover:text-orange-400 transition-colors sm:text-base lg:text-lg"
                       >
-                        OnlyFans (Free)
+                        Commander Gatherings
                       </a>
                       <a
-                        href="#"
-                        className="block text-gray-300 hover:text-pink-400 transition-colors sm:text-base lg:text-lg"
+                        href="/services"
+                        className="block text-gray-300 hover:text-orange-400 transition-colors sm:text-base lg:text-lg"
                       >
-                        Bluesky
+                        Draft Warbands
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="border-t border-gray-700 pt-8 sm:pt-12 lg:pt-16 text-center">
+                <div className="border-t border-orange-900/50 pt-8 sm:pt-12 lg:pt-16 text-center">
                   <p className="text-gray-400 text-xs sm:text-sm lg:text-base">
-                    © 2025 Claire Hamilton. All rights reserved. | Privacy & Discretion Guaranteed
+                    © 2025 Bosca&apos;s Slingers. All rights reserved. | United We Conquer
                   </p>
                 </div>
               </div>
@@ -397,7 +408,7 @@ function App() {
         platformFeePercentage={0.1}
       />
       {location.pathname !== '/admin' && (
-        <MobileCTABar ctaText="Book Now" ctaAction={handleBookingOpen} />
+        <MobileCTABar ctaText="Join the Warband" ctaAction={handleBookingOpen} />
       )}
     </>
   );
