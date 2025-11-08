@@ -58,8 +58,28 @@ function App() {
         <title>Bosca&apos;s Slingers - Where Warriors Gather</title>
         <meta
           name="description"
-          content="Assemble your party. Unite with fellow warriors. Premier Magic: The Gathering tournaments where legends are forged together."
+          content="Assemble your party. Unite with fellow warriors. Epic Magic: The Gathering tournaments where friendships are forged and legends are born."
         />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.boscaslingers.ai/" />
+        <meta property="og:title" content="Bosca's Slingers - Where Warriors Gather" />
+        <meta
+          property="og:description"
+          content="Assemble your party. Unite with fellow warriors. Epic Magic: The Gathering tournaments where friendships are forged and legends are born."
+        />
+        <meta property="og:image" content="https://www.boscaslingers.ai/og-image.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.boscaslingers.ai/" />
+        <meta property="twitter:title" content="Bosca's Slingers - Where Warriors Gather" />
+        <meta
+          property="twitter:description"
+          content="Assemble your party. Unite with fellow warriors. Epic Magic: The Gathering tournaments where friendships are forged and legends are born."
+        />
+        <meta property="twitter:image" content="https://www.boscaslingers.ai/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-gray-900 via-orange-950 to-gray-900">
