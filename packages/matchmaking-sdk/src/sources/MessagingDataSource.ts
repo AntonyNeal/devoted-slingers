@@ -1,4 +1,4 @@
-import { Message, Conversation, MessageType, BaseDataSource } from '../types';
+import { Message, Conversation, BaseDataSource } from '../types';
 
 export abstract class MessagingDataSource implements BaseDataSource {
   abstract initialize(): Promise<void>;
