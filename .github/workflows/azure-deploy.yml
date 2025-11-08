@@ -7,6 +7,7 @@ on:
 
 env:
   NODE_VERSION: '20.x'
+  AZURE_WEBAPP_NAME: bosca-slingers-api
 
 jobs:
   build-and-deploy-api:
@@ -24,9 +25,16 @@ jobs:
           cd api
           npm ci
           
-      - name: Deploy to Azure App Service
-        uses: azure/webapps-deploy@v2
+      - name: Login to Azure
+        uses: azure/login@v1
         with:
-          app-name: bosca-slingers-api
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_API }}
-          package: ./api
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Deploy to Azure Web App
+        run: |
+          cd api
+          zip -r deploy.zip .
+          az webapp deployment source config-zip \
+            --resource-group bosca-slingers-rg \
+            --name ${{ env.AZURE_WEBAPP_NAME }} \
+            --src deploy.zip
