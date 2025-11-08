@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Cherry Blossom Favicon - Simplified elegant design -->
+  <defs>
+    <style>
+      .petal { fill: #FFB6D9; stroke: #FF69B4; stroke-width: 0.3; }
+      .petal-light { fill: #FFC0E0; stroke: #FF69B4; stroke-width: 0.3; }
+      .center { fill: #FFD700; stroke: #FFA500; stroke-width: 0.5; }
+    </style>
+  </defs>
+  
+  <!-- Five petals arranged in a circle -->
+  <g transform="translate(50, 50)">
+    <!-- Petal 1 (top) -->
+    <ellipse class="petal" cx="0" cy="-16" rx="10" ry="16" />
+    
+    <!-- Petal 2 (top-right) -->
+    <ellipse class="petal-light" cx="15.2" cy="-4.9" rx="10" ry="16" transform="rotate(72 15.2 -4.9)" />
+    
+    <!-- Petal 3 (bottom-right) -->
+    <ellipse class="petal" cx="9.4" cy="12.9" rx="10" ry="16" transform="rotate(144 9.4 12.9)" />
+    
+    <!-- Petal 4 (bottom-left) -->
+    <ellipse class="petal-light" cx="-9.4" cy="12.9" rx="10" ry="16" transform="rotate(216 -9.4 12.9)" />
+    
+    <!-- Petal 5 (top-left) -->
+    <ellipse class="petal" cx="-15.2" cy="-4.9" rx="10" ry="16" transform="rotate(288 -15.2 -4.9)" />
+    
+    <!-- Center circle -->
+    <circle class="center" cx="0" cy="0" r="6" />
+  </g>
+</svg>
