@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { matchmakingApi, userApi } from '../services/api';
 import { Match } from '@devoted-slingers/matchmaking-sdk';
 
 export const MatchesPage: React.FC = () => {
   const [matches, setMatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadMatches();
@@ -64,7 +66,11 @@ export const MatchesPage: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {matches.map((match) => (
-              <div key={match.id} className="card p-4 hover:shadow-xl transition-shadow cursor-pointer">
+              <div 
+                key={match.id} 
+                className="card p-4 hover:shadow-xl transition-shadow cursor-pointer"
+                onClick={() => navigate(`/chat/${match.id}`)}
+              >
                 <div className="flex items-center gap-4">
                   {match.profile?.avatarUrl ? (
                     <img

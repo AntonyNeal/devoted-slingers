@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { SwipePage } from './pages/SwipePage';
 import { MatchesPage } from './pages/MatchesPage';
+import { ChatPage } from './pages/ChatPage';
+import { DeckBuilderPage } from './pages/DeckBuilderPage';
+import { ProfilePage } from './pages/ProfilePage';
 import './index.css';
 
 function App() {
@@ -26,6 +29,18 @@ function App() {
                 >
                   Matches
                 </Link>
+                <Link
+                  to="/decks"
+                  className="text-gray-700 hover:text-primary-600 font-medium"
+                >
+                  Decks
+                </Link>
+                <Link
+                  to="/profile"
+                  className="text-gray-700 hover:text-primary-600 font-medium"
+                >
+                  Profile
+                </Link>
               </div>
             </div>
           </div>
@@ -34,6 +49,9 @@ function App() {
         <Routes>
           <Route path="/" element={<SwipePage />} />
           <Route path="/matches" element={<MatchesPage />} />
+          <Route path="/chat/:matchId" element={<ChatPage />} />
+          <Route path="/decks" element={<DeckBuilderPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </Router>

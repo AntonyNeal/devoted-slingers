@@ -2,6 +2,7 @@
   "name": "@devoted-slingers/matchmaking-sdk",
   "version": "1.0.0",
   "description": "Generic matchmaking SDK with MTG-specific extensions",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
