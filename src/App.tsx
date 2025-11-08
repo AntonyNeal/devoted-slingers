@@ -60,7 +60,7 @@ function App() {
           name="description"
           content="Assemble your party. Unite with fellow warriors. Epic Magic: The Gathering tournaments where friendships are forged and legends are born."
         />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.boscaslingers.ai/" />
@@ -70,7 +70,7 @@ function App() {
           content="Assemble your party. Unite with fellow warriors. Epic Magic: The Gathering tournaments where friendships are forged and legends are born."
         />
         <meta property="og:image" content="https://www.boscaslingers.ai/og-image.jpg" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.boscaslingers.ai/" />
