@@ -307,9 +307,7 @@ export default function AdminDashboard() {
             <div className="bg-gradient-to-br from-orange-900/40 to-orange-800/20 border border-orange-500/30 rounded-lg p-6 hover:border-orange-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20">
               <div className="text-4xl mb-3">📍</div>
               <h3 className="text-lg font-bold text-white mb-2">Multi-Location Support</h3>
-              <p className="text-orange-100 text-sm">
-                Manage tournaments across different venues
-              </p>
+              <p className="text-orange-100 text-sm">Manage tournaments across different venues</p>
             </div>
 
             <div className="bg-gradient-to-br from-amber-900/40 to-amber-800/20 border border-amber-500/30 rounded-lg p-6 hover:border-amber-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/20">
