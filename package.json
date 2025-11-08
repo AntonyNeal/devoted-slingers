@@ -28,8 +28,7 @@
     "test": "playwright test",
     "test:unit": "vitest",
     "test:unit:run": "vitest run",
-    "test:unit:ui": "vitest --ui",
-    "prepare": "husky"
+    "test:unit:ui": "vitest --ui"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
